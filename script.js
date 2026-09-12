@@ -2,8 +2,10 @@ const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 
 if (menuToggle && siteNav) {
+  const mobileMediaQuery = window.matchMedia("(max-width: 860px)");
+
   const syncNavigationState = () => {
-    const isDesktop = window.innerWidth > 860;
+    const isDesktop = !mobileMediaQuery.matches;
 
     if (isDesktop) {
       siteNav.hidden = false;
@@ -28,7 +30,7 @@ if (menuToggle && siteNav) {
 
   siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      if (window.innerWidth > 860) {
+      if (!mobileMediaQuery.matches) {
         return;
       }
 
@@ -40,5 +42,5 @@ if (menuToggle && siteNav) {
   });
 
   syncNavigationState();
-  window.addEventListener("resize", syncNavigationState);
+  mobileMediaQuery.addEventListener("change", syncNavigationState);
 }
