@@ -28,6 +28,10 @@ if (menuToggle && siteNav) {
 
   siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
+      if (window.innerWidth > 860) {
+        return;
+      }
+
       siteNav.classList.remove("is-open");
       siteNav.hidden = true;
       siteNav.setAttribute("aria-hidden", "true");
