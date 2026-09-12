@@ -42,7 +42,7 @@
           <a href="#how-it-works">How It Works</a>
           <a href="#pricing">Pricing</a>
           <a href="#about-us">About Us</a>
-          <a class="button button-primary" href="#start">Start Your Book</a>
+          <a class="button button-primary" href="#start-form">Start Your Book</a>
         </nav>
       </div>
     </header>
@@ -156,7 +156,21 @@
         <div class="container start-panel">
           <p class="eyebrow">Start your book</p>
           <h2>Begin with your photographs. We’ll help shape the story.</h2>
-          <a class="button button-primary" href="#start">
+          <form class="start-form" id="start-form">
+            <label>
+              Your name
+              <input type="text" name="name" autocomplete="name" />
+            </label>
+            <label>
+              Email address
+              <input type="email" name="email" autocomplete="email" />
+            </label>
+            <label>
+              What story would you like to preserve?
+              <textarea name="story" rows="4"></textarea>
+            </label>
+          </form>
+          <a class="button button-primary" href="#start-form">
             Start Your Book
           </a>
         </div>
