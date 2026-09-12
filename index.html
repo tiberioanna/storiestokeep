@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stories to Keep</title>
+    <meta
+      name="description"
+      content="Stories to Keep creates custom photo books and memoir-style books with elegant, timeless design."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Stories to Keep home">
+          <img
+            class="brand-logo"
+            src="assets/stories-to-keep-logo.svg"
+            alt="Stories to Keep logo"
+          />
+          <span class="brand-name">STORIES TO KEEP</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav" id="site-navigation" aria-label="Primary">
+          <a href="#styles">Our Styles</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about-us">About Us</a>
+          <a class="button button-primary" href="#start-form">Start Your Book</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Custom memoir &amp; photo books</p>
+            <h1>
+              Everyone has a story to tell.
+              <span>What is yours?</span>
+            </h1>
+            <p class="hero-text">
+              Choose from our top-rated photo book designs
+            </p>
+            <a class="button button-secondary" href="#styles">Explore Styles</a>
+          </div>
+
+          <div class="hero-visual">
+            <div class="orientation-selector" aria-hidden="true">
+              <span class="selector-option selector-option-active">Landscape</span>
+              <span class="selector-option">Portrait</span>
+            </div>
+
+            <div class="book-display">
+              <div class="book-shadow"></div>
+              <img
+                class="book-cover"
+                src="assets/hero-book.svg"
+                alt="Open Stories to Keep photo book"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="styles-section" id="styles">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Photo book styles</p>
+            <h2>Designed to feel personal, polished, and worth keeping.</h2>
+          </div>
+
+          <div class="styles-grid">
+            <article class="style-card">
+              <img src="assets/classic-book.svg" alt="The Classic photo book style" />
+              <h3>THE CLASSIC</h3>
+              <p>Elegant, clean &amp; timeless</p>
+              <a class="button button-card" href="#classic-style">Explore Classic</a>
+            </article>
+
+            <article class="style-card">
+              <img src="assets/story-book.svg" alt="The Story photo book style" />
+              <h3>THE STORY</h3>
+              <p>Photos + text flowing like a magazine</p>
+              <a class="button button-card" href="#story-style">Explore The Story</a>
+            </article>
+
+            <article class="style-card">
+              <img
+                src="assets/cinematic-book.svg"
+                alt="The Cinematic photo book style"
+              />
+              <h3>THE CINEMATIC</h3>
+              <p>Big, beautiful images with maximum impact</p>
+              <a class="button button-card" href="#cinematic-style">Explore Cinematic</a>
+            </article>
+
+            <article class="style-card">
+              <img src="assets/memory-book.svg" alt="The Memory photo book style" />
+              <h3>THE MEMORY</h3>
+              <p>Personal, nostalgic &amp; filled with details</p>
+              <a class="button button-card" href="#memory-style">Explore The Memory</a>
+            </article>
+          </div>
+
+          <div class="style-details">
+            <article class="style-detail" id="classic-style">
+              <p class="eyebrow">The Classic</p>
+              <h3>Balanced layouts for a timeless keepsake.</h3>
+              <p>
+                A refined approach with clean spacing, elegant pacing, and room for
+                your photographs to feel polished without overwhelming the page.
+              </p>
+              <a class="button button-card" href="#start-form">Start with Classic</a>
+            </article>
+
+            <article class="style-detail" id="story-style">
+              <p class="eyebrow">The Story</p>
+              <h3>Editorial storytelling with images and narrative together.</h3>
+              <p>
+                Ideal for memoir-style books where captions, memories, and
+                photographs flow together with the warmth of a magazine feature.
+              </p>
+              <a class="button button-card" href="#start-form">Start with The Story</a>
+            </article>
+
+            <article class="style-detail" id="cinematic-style">
+              <p class="eyebrow">The Cinematic</p>
+              <h3>Generous imagery with striking visual impact.</h3>
+              <p>
+                Best for bold photography and milestone moments that deserve larger
+                spreads, dramatic scale, and a gallery-like presentation.
+              </p>
+              <a class="button button-card" href="#start-form">Start with Cinematic</a>
+            </article>
+
+            <article class="style-detail" id="memory-style">
+              <p class="eyebrow">The Memory</p>
+              <h3>Layered details with a nostalgic, personal tone.</h3>
+              <p>
+                Thoughtful layouts for family history, handwritten notes, and the
+                meaningful little details that bring a story fully to life.
+              </p>
+              <a class="button button-card" href="#start-form">Start with The Memory</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-band">
+        <div class="container info-grid">
+          <section id="how-it-works">
+            <p class="eyebrow">How it works</p>
+            <h2>A guided process for turning photographs into heirlooms.</h2>
+            <p>
+              Share your photos, memories, and notes. We shape them into a refined
+              keepsake book that feels intimate, editorial, and beautifully made.
+            </p>
+          </section>
+          <section id="pricing">
+            <p class="eyebrow">Pricing</p>
+            <h2>Tailored to the scope of your story.</h2>
+            <p>
+              Every book is customized around your images, narrative, and preferred
+              format, with thoughtful design support from start to finish.
+            </p>
+          </section>
+          <section id="about-us">
+            <p class="eyebrow">About us</p>
+            <h2>Professional, warm, and deeply personal.</h2>
+            <p>
+              Stories to Keep creates polished photo books and memoir-style books
+              that preserve the texture, emotion, and details behind the moments
+              that matter most.
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <section class="start-section" id="start">
+        <div class="container start-panel">
+          <p class="eyebrow">Start your book</p>
+          <h2>Begin with your photographs. We’ll help shape the story.</h2>
+          <form class="start-form" id="start-form">
+            <label>
+              Your name
+              <input type="text" name="name" autocomplete="name" />
+            </label>
+            <label>
+              Email address
+              <input type="email" name="email" autocomplete="email" />
+            </label>
+            <label>
+              What story would you like to preserve?
+              <textarea name="story" rows="4"></textarea>
+            </label>
+            <button class="button button-primary" type="submit">
+              Start Your Book
+            </button>
+          </form>
+          <p
+            class="form-message"
+            id="form-message"
+            tabindex="-1"
+            aria-live="polite"
+            hidden
+          ></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

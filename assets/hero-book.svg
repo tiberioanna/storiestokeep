@@ -1,0 +1,15 @@
+<svg width="900" height="640" viewBox="0 0 900 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="640" rx="40" fill="#EEE3D4"/>
+  <path d="M120 136C120 112.804 138.804 94 162 94H445V530H162C138.804 530 120 511.196 120 488V136Z" fill="#F8F3EC"/>
+  <path d="M455 94H738C761.196 94 780 112.804 780 136V488C780 511.196 761.196 530 738 530H455V94Z" fill="#FCF8F2"/>
+  <rect x="151" y="126" width="263" height="172" rx="18" fill="#C7A98A"/>
+  <rect x="151" y="322" width="263" height="42" rx="8" fill="#E9DDCF"/>
+  <rect x="151" y="378" width="226" height="18" rx="9" fill="#D8C7B6"/>
+  <rect x="151" y="408" width="196" height="18" rx="9" fill="#D8C7B6"/>
+  <rect x="490" y="126" width="257" height="276" rx="18" fill="#CDB49A"/>
+  <rect x="490" y="421" width="173" height="18" rx="9" fill="#D8C7B6"/>
+  <rect x="490" y="451" width="228" height="18" rx="9" fill="#D8C7B6"/>
+  <path d="M445 94H455V530H445V94Z" fill="#D0BEAB"/>
+  <path d="M151 126H414V225C367.493 208.572 318.645 200.358 268.557 200.74C225.33 201.07 182.904 207.823 151 221V126Z" fill="#9A6F53"/>
+  <path d="M490 126H747V402C709.445 368.601 664.293 345.464 615.554 334.761C576.617 326.213 534.514 326.856 490 344V126Z" fill="#B88863"/>
+</svg>
