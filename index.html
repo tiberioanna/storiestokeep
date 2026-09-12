@@ -92,14 +92,14 @@
               <img src="assets/classic-book.svg" alt="The Classic photo book style" />
               <h3>THE CLASSIC</h3>
               <p>Elegant, clean &amp; timeless</p>
-              <a class="button button-card" href="#start">Explore Classic</a>
+              <a class="button button-card" href="#classic-style">Explore Classic</a>
             </article>
 
             <article class="style-card">
               <img src="assets/story-book.svg" alt="The Story photo book style" />
               <h3>THE STORY</h3>
               <p>Photos + text flowing like a magazine</p>
-              <a class="button button-card" href="#start">Explore The Story</a>
+              <a class="button button-card" href="#story-style">Explore The Story</a>
             </article>
 
             <article class="style-card">
@@ -109,14 +109,56 @@
               />
               <h3>THE CINEMATIC</h3>
               <p>Big, beautiful images with maximum impact</p>
-              <a class="button button-card" href="#start">Explore Cinematic</a>
+              <a class="button button-card" href="#cinematic-style">Explore Cinematic</a>
             </article>
 
             <article class="style-card">
               <img src="assets/memory-book.svg" alt="The Memory photo book style" />
               <h3>THE MEMORY</h3>
               <p>Personal, nostalgic &amp; filled with details</p>
-              <a class="button button-card" href="#start">Explore The Memory</a>
+              <a class="button button-card" href="#memory-style">Explore The Memory</a>
+            </article>
+          </div>
+
+          <div class="style-details">
+            <article class="style-detail" id="classic-style">
+              <p class="eyebrow">The Classic</p>
+              <h3>Balanced layouts for a timeless keepsake.</h3>
+              <p>
+                A refined approach with clean spacing, elegant pacing, and room for
+                your photographs to feel polished without overwhelming the page.
+              </p>
+              <a class="button button-card" href="#start-form">Start with Classic</a>
+            </article>
+
+            <article class="style-detail" id="story-style">
+              <p class="eyebrow">The Story</p>
+              <h3>Editorial storytelling with images and narrative together.</h3>
+              <p>
+                Ideal for memoir-style books where captions, memories, and
+                photographs flow together with the warmth of a magazine feature.
+              </p>
+              <a class="button button-card" href="#start-form">Start with The Story</a>
+            </article>
+
+            <article class="style-detail" id="cinematic-style">
+              <p class="eyebrow">The Cinematic</p>
+              <h3>Generous imagery with striking visual impact.</h3>
+              <p>
+                Best for bold photography and milestone moments that deserve larger
+                spreads, dramatic scale, and a gallery-like presentation.
+              </p>
+              <a class="button button-card" href="#start-form">Start with Cinematic</a>
+            </article>
+
+            <article class="style-detail" id="memory-style">
+              <p class="eyebrow">The Memory</p>
+              <h3>Layered details with a nostalgic, personal tone.</h3>
+              <p>
+                Thoughtful layouts for family history, handwritten notes, and the
+                meaningful little details that bring a story fully to life.
+              </p>
+              <a class="button button-card" href="#start-form">Start with The Memory</a>
             </article>
           </div>
         </div>
@@ -169,10 +211,11 @@
               What story would you like to preserve?
               <textarea name="story" rows="4"></textarea>
             </label>
+            <button class="button button-primary" type="submit">
+              Start Your Book
+            </button>
           </form>
-          <a class="button button-primary" href="#start-form">
-            Start Your Book
-          </a>
+          <p class="form-message" id="form-message" tabindex="-1" hidden></p>
         </div>
       </section>
     </main>
