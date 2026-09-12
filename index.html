@@ -109,7 +109,6 @@
       gap: 14px;
     }
 
-    /* SVG High-Fidelity stamp replication matching image_5 & image_9 on the left of title */
     .logo-img {
       width: 52px;
       height: 52px;
@@ -118,9 +117,10 @@
       justify-content: center;
     }
 
-    .logo-img svg {
+    .logo-img img {
       width: 100%;
       height: 100%;
+      display: block;
     }
 
     .brand-name {
@@ -622,69 +622,7 @@
     <div class="container nav-container">
       <div class="logo-area">
         <div class="logo-img">
-          <!-- Circular, stamp-style logo modeled on image_5 / image_9 -->
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <!-- Ornate Outer stamp rings -->
-            <circle cx="50" cy="50" r="47" fill="none" stroke="#122d42" stroke-width="1.8" />
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#122d42" stroke-width="0.8" />
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#122d42" stroke-width="0.5" />
-            
-            <!-- Micro beaded circular trim -->
-            <circle cx="50" cy="50" r="45.5" fill="none" stroke="#122d42" stroke-width="0.75" stroke-dasharray="1 2.5" />
-            
-            <!-- Arched Bottom Bow & star logic -->
-            <path d="M28 81 C34 86, 50 88, 50 88 C50 88, 66 86, 72 81" fill="none" stroke="#122d42" stroke-width="1" />
-            <circle cx="50" cy="88" r="1.5" fill="#122d42" />
-            <circle cx="36" cy="84.2" r="1.2" fill="#122d42" />
-            <circle cx="64" cy="84.2" r="1.2" fill="#122d42" />
-
-            <!-- Path definition for arched 'STORIES TO KEEP' text -->
-            <defs>
-              <path id="top-curve" d="M 12.5 50 A 37.5 37.5 0 0 1 87.5 50" fill="none" />
-            </defs>
-            <text font-family="'Cinzel', serif" font-weight="800" font-size="8.8" fill="#122d42" letter-spacing="1.2">
-              <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
-                STORIES TO KEEP
-              </textPath>
-            </text>
-
-            <!-- Arched line below brand curve -->
-            <path d="M 18.5 50 A 31.5 31.5 0 0 1 81.5 50" fill="none" stroke="#122d42" stroke-width="1" />
-            <path d="M 22 50 A 28 28 0 0 1 78 50" fill="none" stroke="#122d42" stroke-width="0.5" />
-            
-            <!-- Ornate star decorations at sides -->
-            <polygon points="11.5,50 13,51.5 14.5,50 13,48.5" fill="#122d42" />
-            <polygon points="85.5,50 87,51.5 88.5,50 87,48.5" fill="#122d42" />
-
-            <!-- Filigree ornamental swags / scrolls -->
-            <path d="M27.5 47 Q34 33 42 45.2" fill="none" stroke="#122d42" stroke-width="0.9" />
-            <path d="M23.5 45.5 Q35 24 43 43.5" fill="none" stroke="#122d42" stroke-width="0.75" />
-            <path d="M72.5 47 Q66 33 58 45.2" fill="none" stroke="#122d42" stroke-width="0.9" />
-            <path d="M76.5 45.5 Q65 24 57 43.5" fill="none" stroke="#122d42" stroke-width="0.75" />
-
-            <!-- Stylized Pen Nib center piece -->
-            <g transform="translate(0, 4.5)">
-              <!-- Outer border / body -->
-              <path d="M 50 13 L 56.5 30.5 L 56.5 43.5 C 56.5 46.5 50 48.5 50 48.5 C 50 48.5 43.5 46.5 43.5 43.5 L 43.5 30.5 Z" fill="#122d42" stroke="#122d42" stroke-width="1" stroke-linejoin="round" />
-              <!-- Fine lines (Ink channel slit) -->
-              <line x1="50" y1="13.2" x2="50" y2="35.5" stroke="#ffffff" stroke-width="1.2" />
-              <!-- Breather Hole -->
-              <circle cx="50" cy="33.2" r="1.4" fill="#ffffff" />
-              <!-- Lower collars -->
-              <path d="M 45.5 43.5 L 54.5 43.5" stroke="#ffffff" stroke-width="0.8" />
-              <path d="M 47.5 40.5 L 52.5 40.5" stroke="#ffffff" stroke-width="0.6" />
-              <!-- Reflection curve -->
-              <path d="M 46 30 Q 50 24.5 54 30" fill="none" stroke="#ffffff" stroke-width="0.6" />
-            </g>
-
-            <!-- Bold 'STK' typography grounded by horizontal rule -->
-            <text x="50.2" y="74.5" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#122d42" text-anchor="middle" letter-spacing="1">STK</text>
-            
-            <line x1="27" y1="79.5" x2="73" y2="79.5" stroke="#122d42" stroke-width="2" />
-            
-            <!-- Bottom micro diamond dot -->
-            <polygon points="50,91.2 51,92.7 50,94.2 49,92.7" fill="#122d42" />
-          </svg>
+          <img src="logo.svg" alt="Stories to Keep circular STK logo">
         </div>
         <span class="brand-name">STORIES TO KEEP</span>
       </div>
