@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Stories to Keep logo">
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2630"/>
+      <stop offset="100%" stop-color="#4a5a68"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f7fa"/>
+      <stop offset="100%" stop-color="#c8ced6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="none"/>
+  <circle cx="256" cy="256" r="238" fill="none" stroke="url(#ring)" stroke-width="14"/>
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#ring)" stroke-width="8"/>
+  <circle cx="256" cy="256" r="202" fill="none" stroke="url(#ring)" stroke-width="4"/>
+  <path d="M123 258c0-74 59-133 133-133s133 59 133 133" fill="none" stroke="url(#ring)" stroke-width="10"/>
+  <path d="M147 258c0-61 48-109 109-109s109 48 109 109" fill="none" stroke="url(#ring)" stroke-width="5"/>
+  <path d="M256 112c-20 27-31 63-31 90 0 22 10 45 31 67 21-22 31-45 31-67 0-27-11-63-31-90z" fill="url(#ink)" stroke="url(#ring)" stroke-width="6"/>
+  <path d="M256 150v110" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="256" cy="239" r="8" fill="#ffffff"/>
+  <path d="M205 250h102" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M210 268h92" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M152 205c22 2 38 16 49 44-19-10-33-13-49-44zm208 0c-22 2-38 16-49 44 19-10 33-13 49-44z" fill="url(#ring)"/>
+  <text x="256" y="348" text-anchor="middle" font-family="Georgia, serif" font-size="118" font-weight="700" fill="#1c2630">STK</text>
+  <path d="M140 382h232" stroke="#1c2630" stroke-width="8" stroke-linecap="round"/>
+  <path d="M178 408c22 16 50 24 78 24s56-8 78-24" fill="none" stroke="url(#ring)" stroke-width="6" stroke-linecap="round"/>
+</svg>

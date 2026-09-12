@@ -1,22 +1,31 @@
-# Copilot Context
+# Stories to Keep
 
-Use this file to preserve the important context for future chats so you do not have to explain everything again.
+```text
+Current status:
+- GitHub Pages is configured for the repo.
+- Custom domain: storiestokeep.ca
+- index.html is present in the repo root.
+- CNAME file is present in the repo root.
 
-## Current goal
-- Keep the website and conversation context in sync.
-- Avoid re-explaining the same work in future sessions.
+Brand assets:
+- Primary logo provided by the user is the circular STK / STORIES TO KEEP mark.
 
-## How to use this file
-Update this note whenever the session changes.
+Next planned website changes:
+- Replace the current logo with the provided logo.
+- Fill in the "How it works" section.
+- Add pricing.
+- Add About Us content.
+- Make the books interactive with page-flip behavior.
+- Add picture upload functionality.
+- Add live chat.
+- Add basket/cart functionality.
+- Add a report section.
+```
 
-## Session handoff template
+## Handoff template
 - Goal:
 - What changed:
 - What is broken:
 - What we tried:
 - Next step:
 - Links:
-
-## Important links
-- Repository: https://github.com/tiberioanna/storiestokeep
-- GitHub Pages settings: https://github.com/tiberioanna/storiestokeep/settings/pages
