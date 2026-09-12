@@ -44,7 +44,11 @@ if (menuToggle && siteNav) {
   });
 
   syncNavigationState();
-  mobileMediaQuery.addEventListener("change", syncNavigationState);
+  if (typeof mobileMediaQuery.addEventListener === "function") {
+    mobileMediaQuery.addEventListener("change", syncNavigationState);
+  } else if (typeof mobileMediaQuery.addListener === "function") {
+    mobileMediaQuery.addListener(syncNavigationState);
+  }
 }
 
 if (startForm && formMessage) {
