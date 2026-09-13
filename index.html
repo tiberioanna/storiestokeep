@@ -1,909 +1,322 @@
+HTML
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stories to Keep | Photobooks</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* -------------------------------------------------------------
-       1. VARIABLES & RESET
-       ------------------------------------------------------------- */
-    :root {
-      --bg-light: #f6f5f1; /* Pale sand/off-white */
-      --navy-primary: #122d42; /* Classic navy blue from mockups */
-      --navy-dark: #091c2c;
-      --navy-light: #1c4666;
-      --text-dark: #122d42; /* Styled with Navy Primary brand text color */
-      --text-body: #333333;
-      --text-muted: #555555;
-      --white: #ffffff;
-      --border-color: #d1d9e0;
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(18, 45, 66, 0.08);
-      --border-radius: 8px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-body);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* -------------------------------------------------------------
-       2. REUSABLE UTILITIES & BASE ELEMENTS
-       ------------------------------------------------------------- */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
-    }
-
-    button, .btn {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-navy {
-      background-color: var(--navy-primary);
-      color: var(--white);
-    }
-
-    .btn-navy:hover {
-      background-color: var(--navy-dark);
-      transform: translateY(-1px);
-    }
-
-    /* -------------------------------------------------------------
-       3. NAVIGATION BAR
-       ------------------------------------------------------------- */
-    header {
-      background-color: var(--bg-light);
-      border-bottom: 1.5px solid rgba(18, 45, 66, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 80px;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    /* SVG High-Fidelity stamp replication matching image_5 & image_9 on the left of title */
-    .logo-img {
-      width: 52px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-img svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .brand-name {
-      font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 1.8px;
-      color: var(--navy-primary);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--navy-primary);
-      opacity: 0.85;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: var(--navy-dark);
-    }
-
-    .btn-cta {
-      padding: 10px 22px;
-      font-size: 0.9rem;
-      border-radius: 4px;
-    }
-
-    /* -------------------------------------------------------------
-       4. HERO SECTION (Dark Blue Area)
-       ------------------------------------------------------------- */
-    .hero {
-      background-color: var(--navy-primary);
-      color: var(--white);
-      padding: 68px 0 108px 0;
-    }
-
-    .hero-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-
-    .hero-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 500;
-      line-height: 1.15;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 300;
-      opacity: 0.85;
-    }
-
-    /* Selector Widget (Portrait/Landscape Picker) to match image_9 far right top */
-    .selector-widget {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: 50px;
-      padding: 6px 16px;
-      gap: 14px;
-      font-size: 0.825rem;
-      letter-spacing: 0.5px;
-      font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .format-options {
-      display: flex;
-      gap: 8px;
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 4px;
-      border-radius: 30px;
-    }
-
-    .format-btn {
-      background: none;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .format-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: none;
-      stroke: var(--white);
-      stroke-width: 2px;
-      opacity: 0.6;
-    }
-
-    .format-btn.active {
-      background-color: var(--white);
-    }
-
-    .format-btn.active svg {
-      stroke: var(--navy-primary);
-      opacity: 1;
-    }
-
-    .format-label {
-      opacity: 0.8;
-      text-transform: capitalize;
-      font-size: 0.85rem;
-    }
-
-    /* -------------------------------------------------------------
-       5. STYLE SELECTIONS
-       ------------------------------------------------------------- */
-    .styles-section {
-      margin-top: -60px;
-      padding-bottom: 72px;
-    }
-
-    .styles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border-color);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .card-header-area {
-      padding: 24px 18px 8px 18px;
-      text-align: center;
-    }
-
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--navy-primary);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .card-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      min-height: 42px; /* standardizing space for multiline subtext */
-      padding: 0 12px;
-      line-height: 1.4;
-    }
-
-    .card-img-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background-color: #faf9f5;
-      border-top: 1px solid rgba(18, 45, 66, 0.03);
-      border-bottom: 1px solid rgba(18, 45, 66, 0.03);
-    }
-
-    .card-action {
-      padding: 16px 20px 20px 20px;
-      background-color: var(--white);
-    }
-
-    .btn-card {
-      width: 100%;
-      padding: 12px;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      border-radius: 4px;
-    }
-
-    /* Custom high-fidelity illustration representing open book spread thumbnails */
-    .book-mockup-graphic {
-      width: 100%;
-      max-width: 184px;
-      height: 114px;
-      background-color: #ece9df;
-      box-shadow: 0 4px 12px rgba(18, 45, 66, 0.12);
-      border-radius: 3px 6px 6px 3px;
-      position: relative;
-      display: flex;
-      padding: 4px;
-      border: 1px solid rgba(18, 45, 66, 0.15);
-    }
-    
-    .book-mockup-graphic::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(0, 0, 0, 0.18);
-      box-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-      transform: translateX(-50%);
-    }
-
-    .page-half {
-      flex: 1;
-      height: 100%;
-      padding: 4px 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      justify-content: center;
-    }
-
-    .page-img {
-      background: #c3b9ad;
-      width: 100%;
-      height: 60%;
-      border-radius: 1px;
-      box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
-    }
-
-    .page-text {
-      background: #aaa093;
-      height: 3px;
-      width: 85%;
-      border-radius: 1px;
-    }
-
-    .page-text-short {
-      background: #aaa093;
-      height: 3px;
-      width: 50%;
-      border-radius: 1px;
-    }
-
-    /* -------------------------------------------------------------
-       6. BOTTOM INTAKE SECTION (Ready to start?)
-       ------------------------------------------------------------- */
-    .intake-section {
-      background-color: var(--white);
-      border-top: 1.5px solid rgba(18, 45, 66, 0.08);
-      padding: 64px 0 72px 0;
-    }
-
-    .intake-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 2fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .intake-intro h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.25rem;
-      color: var(--navy-primary);
-      margin-bottom: 12px;
-      line-height: 1.25;
-      font-weight: 500;
-    }
-
-    .intake-intro p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* Form Container */
-    .form-box form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      outline: none;
-      transition: all 0.2s ease;
-    }
-
-    .form-control:focus {
-      border-color: var(--navy-primary);
-      background-color: var(--white);
-      box-shadow: 0 0 0 3px rgba(18, 45, 66, 0.05);
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .select-style {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23122d42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      background-size: 14px;
-      padding-right: 40px;
-    }
-
-    .btn-submit {
-      padding: 14px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-radius: 4px;
-    }
-
-    /* Sidebar Features column */
-    .benefits h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      color: var(--navy-primary);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .benefits-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .benefits-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
-    .benefits-list li::before {
-      content: "•";
-      color: var(--navy-primary);
-      font-weight: bold;
-      font-size: 1.5rem;
-      line-height: 0.8;
-    }
-
-    /* -------------------------------------------------------------
-       7. CHATBOT WIDGET
-       ------------------------------------------------------------- */
-    .chatbot-trigger {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: var(--white);
-      box-shadow: 0 6px 24px rgba(18, 45, 66, 0.15);
-      border-radius: 50px;
-      padding: 8px 18px 8px 8px;
-      z-index: 1000;
-      cursor: pointer;
-      border: 1.5px solid var(--border-color);
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .chatbot-trigger:hover {
-      transform: translateY(-3px) scale(1.02);
-    }
-
-    .chat-bubble {
-      background: linear-gradient(135deg, #e5bd3c, #cb9a1c);
-      color: var(--white);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
-    }
-
-    .chat-bubble svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--white);
-    }
-
-    .chat-text {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--navy-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* -------------------------------------------------------------
-       8. RESPONSIVE DESIGN BREAKPOINTS
-       ------------------------------------------------------------- */
-    @media (max-width: 992px) {
-      .intake-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .benefits {
-        border-top: 1px solid var(--border-color);
-        padding-top: 32px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-
-      .selector-widget {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-      }
-
-      .styles-section {
-        margin-top: -30px;
-      }
-
-      .styles-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories to Keep | Your memories. Your story. Beautifully preserved.</title>
+    <!-- Google Fonts for Garamond (headings) and Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ---------------------------------------------------------------
-       NAVIGATION BAR (With authentic logo stamp image_5 / image_9)
-       --------------------------------------------------------------- -->
-  <header>
-    <div class="container nav-container">
-      <div class="logo-area">
-        <div class="logo-img">
-          <!-- Circular, stamp-style logo modeled on image_5 / image_9 -->
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <!-- Ornate Outer stamp rings -->
-            <circle cx="50" cy="50" r="47" fill="none" stroke="#122d42" stroke-width="1.8" />
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#122d42" stroke-width="0.8" />
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#122d42" stroke-width="0.5" />
-            
-            <!-- Micro beaded circular trim -->
-            <circle cx="50" cy="50" r="45.5" fill="none" stroke="#122d42" stroke-width="0.75" stroke-dasharray="1 2.5" />
-            
-            <!-- Arched Bottom Bow & star logic -->
-            <path d="M28 81 C34 86, 50 88, 50 88 C50 88, 66 86, 72 81" fill="none" stroke="#122d42" stroke-width="1" />
-            <circle cx="50" cy="88" r="1.5" fill="#122d42" />
-            <circle cx="36" cy="84.2" r="1.2" fill="#122d42" />
-            <circle cx="64" cy="84.2" r="1.2" fill="#122d42" />
-
-            <!-- Path definition for arched 'STORIES TO KEEP' text -->
-            <defs>
-              <path id="top-curve" d="M 12.5 50 A 37.5 37.5 0 0 1 87.5 50" fill="none" />
-            </defs>
-            <text font-family="'Cinzel', serif" font-weight="800" font-size="8.8" fill="#122d42" letter-spacing="1.2">
-              <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
-                STORIES TO KEEP
-              </textPath>
-            </text>
-
-            <!-- Arched line below brand curve -->
-            <path d="M 18.5 50 A 31.5 31.5 0 0 1 81.5 50" fill="none" stroke="#122d42" stroke-width="1" />
-            <path d="M 22 50 A 28 28 0 0 1 78 50" fill="none" stroke="#122d42" stroke-width="0.5" />
-            
-            <!-- Ornate star decorations at sides -->
-            <polygon points="11.5,50 13,51.5 14.5,50 13,48.5" fill="#122d42" />
-            <polygon points="85.5,50 87,51.5 88.5,50 87,48.5" fill="#122d42" />
-
-            <!-- Filigree ornamental swags / scrolls -->
-            <path d="M27.5 47 Q34 33 42 45.2" fill="none" stroke="#122d42" stroke-width="0.9" />
-            <path d="M23.5 45.5 Q35 24 43 43.5" fill="none" stroke="#122d42" stroke-width="0.75" />
-            <path d="M72.5 47 Q66 33 58 45.2" fill="none" stroke="#122d42" stroke-width="0.9" />
-            <path d="M76.5 45.5 Q65 24 57 43.5" fill="none" stroke="#122d42" stroke-width="0.75" />
-
-            <!-- Stylized Pen Nib center piece -->
-            <g transform="translate(0, 4.5)">
-              <!-- Outer border / body -->
-              <path d="M 50 13 L 56.5 30.5 L 56.5 43.5 C 56.5 46.5 50 48.5 50 48.5 C 50 48.5 43.5 46.5 43.5 43.5 L 43.5 30.5 Z" fill="#122d42" stroke="#122d42" stroke-width="1" stroke-linejoin="round" />
-              <!-- Fine lines (Ink channel slit) -->
-              <line x1="50" y1="13.2" x2="50" y2="35.5" stroke="#ffffff" stroke-width="1.2" />
-              <!-- Breather Hole -->
-              <circle cx="50" cy="33.2" r="1.4" fill="#ffffff" />
-              <!-- Lower collars -->
-              <path d="M 45.5 43.5 L 54.5 43.5" stroke="#ffffff" stroke-width="0.8" />
-              <path d="M 47.5 40.5 L 52.5 40.5" stroke="#ffffff" stroke-width="0.6" />
-              <!-- Reflection curve -->
-              <path d="M 46 30 Q 50 24.5 54 30" fill="none" stroke="#ffffff" stroke-width="0.6" />
-            </g>
-
-            <!-- Bold 'STK' typography grounded by horizontal rule -->
-            <text x="50.2" y="74.5" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#122d42" text-anchor="middle" letter-spacing="1">STK</text>
-            
-            <line x1="27" y1="79.5" x2="73" y2="79.5" stroke="#122d42" stroke-width="2" />
-            
-            <!-- Bottom micro diamond dot -->
-            <polygon points="50,91.2 51,92.7 50,94.2 49,92.7" fill="#122d42" />
-          </svg>
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="STK Logo" class="nav-logo">
+            <span class="brand-title">STORIES TO KEEP</span>
         </div>
-        <span class="brand-name">STORIES TO KEEP</span>
-      </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#styles">Our Styles</a></li>
-          <li><a href="#how">How it Works</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#about">About Us</a></li>
-        </ul>
-        <a href="#intake" class="btn btn-navy btn-cta">Start Your Book</a>
-      </nav>
-    </div>
-  </header>
+        <nav class="main-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="styles.html">Our Styles</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="index.html#start" class="nav-cta-btn">START YOUR STORY</a>
+        </nav>
+    </header>
 
-  <!-- ---------------------------------------------------------------
-       HERO SECTION (Dark Navy Banner)
-       --------------------------------------------------------------- -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1 class="hero-title">Everyone has a story to tell.<br>What is yours?</h1>
-        <p class="hero-subtitle">Choose from Our top-rated photo book designs</p>
-      </div>
-
-      <!-- Format selector (Moved to the extreme right to match the prompt specifications) -->
-      <div class="selector-widget">
-        <span class="format-label">Landscape</span>
-        <div class="format-options">
-          <button class="format-btn" title="Landscape">
-            <!-- Landscape SVG Box -->
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /></svg>
-          </button>
-          <button class="format-btn active" title="Square">
-            <!-- Square SVG Box (default highlighted) -->
-            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" /></svg>
-          </button>
-          <button class="format-btn" title="Portrait">
-            <!-- Portrait SVG Box -->
-            <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2" /></svg>
-          </button>
-        </div>
-        <span class="format-label">Portrait</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------------------------------------------------------------
-       BOOK STYLE SELECTIONS
-       --------------------------------------------------------------- -->
-  <section class="styles-section" id="styles">
-    <div class="container">
-      <div class="styles-grid">
-
-        <!-- THE CLASSIC Style Card -->
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE CLASSIC</h2>
-            <p class="card-subtitle">Elegant, clean & timeless</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic">
-              <!-- Left spread side -->
-              <div class="page-half" style="align-items: center; justify-content: center;">
-                <div class="page-img" style="width: 75%; height: 75%; background-color: #bfb09f;"></div>
-              </div>
-              <!-- Right spread side -->
-              <div class="page-half" style="align-items: center; justify-content: center;">
-                <div class="page-img" style="width: 75%; height: 75%; background-color: #aaa296;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore Classic</a>
-          </div>
-        </div>
-
-        <!-- THE STORY Style Card -->
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE STORY</h2>
-            <p class="card-subtitle">Photos + text flowing like a magazine</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic">
-              <div class="page-half">
-                <div class="page-img" style="height: 45%;"></div>
-                <div class="page-text"></div>
-                <div class="page-text-short"></div>
-              </div>
-              <div class="page-half" style="flex-direction: row; flex-wrap: wrap; gap: 4px; padding: 4px;">
-                <div class="page-img" style="width: 45%; height: 45%;"></div>
-                <div class="page-img" style="width: 45%; height: 45%; background-color: #9c8e7e;"></div>
-                <div class="page-text" style="width: 100%; height: 3px;"></div>
-                <div class="page-text-short" style="width: 60%; height: 3px;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore The Story</a>
-          </div>
-        </div>
-
-        <!-- THE CINEMATIC Style Card -->
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE CINEMATIC</h2>
-            <p class="card-subtitle">Big, beautiful images with maximum impact</p>
-          </div>
-          <div class="card-img-container">
-            <!-- Full Bleed layout represented with unified full spread background picture tone -->
-            <div class="book-mockup-graphic" style="padding: 0;">
-              <div class="page-img" style="width: 100%; height: 100%; border-radius: 0; background: linear-gradient(to right, #4a5453, #2b3a42, #4a5453);"></div>
-            </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore Cinematic</a>
-          </div>
-        </div>
-
-        <!-- THE MEMORY Style Card -->
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE MEMORY</h2>
-            <p class="card-subtitle">Personal, nostalgic & filled with details</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic" style="background-color: #dfdcd3;">
-              <div class="page-half" style="gap: 3px; padding: 4px;">
-                <div style="display: flex; gap: 3px; height: 50%;">
-                  <div class="page-img" style="background-color: #a7a296; width: 50%;"></div>
-                  <div class="page-img" style="background-color: #8c887d; width: 50%;"></div>
+    <!-- Main Landing Content -->
+    <main class="landing-container">
+        
+        <!-- Left Side: Plain Book Showcase -->
+        <section class="book-showcase">
+            <div class="book-mockup-card">
+                <div class="badge-new">NEW!</div>
+                <h2>Plain Book Option</h2>
+                <div class="book-image-wrapper">
+                    <!-- Replace with your clean plain book mockup image -->
+                    <img src="images/plain-book-cover.png" alt="Plain white hardcover book with STK logo on the cover" class="plain-book-img">
                 </div>
-                <div class="page-text" style="width: 90%;"></div>
-                <div class="page-img" style="background-color: #726e63; height: 35%;"></div>
-              </div>
-              <div class="page-half" style="gap: 3px; padding: 4px;">
-                <div class="page-img" style="background-color: #7b7e75; height: 40%;"></div>
-                <div class="page-text" style="width: 100%;"></div>
-                <div style="display: flex; gap: 3px; height: 45%;">
-                  <div class="page-img" style="background-color: #a19a8f; width: 45%;"></div>
-                  <div class="page-text-short" style="width: 45%;"></div>
+                <p class="book-caption annotation">
+                    <span class="arrow-sketch">↙</span> Subtle & classic: Just our logo on the cover!
+                </p>
+            </div>
+        </section>
+
+        <!-- Right Side: Hero Intro Text -->
+        <section class="hero-content" id="start">
+            <div class="scrapbook-frame">
+                <div class="corner-doodle top-left"></div>
+                <div class="corner-doodle top-right"></div>
+                
+                <span class="sub-headline">— EVERYONE HAS A STORY TO TELL &bull; WHAT IS YOURS? —</span>
+                <h1>STORIES TO KEEP</h1>
+                <p class="tagline">Your memories. Your story. Beautifully preserved.</p>
+                <p class="description">
+                    We turn your photographic, memories and stories into beautiful books made to be held, shared, and kept for generations.
+                </p>
+
+                <div class="cta-wrapper">
+                    <a href="how-it-works.html" class="btn-scrapbook">START YOUR STORY</a>
+                    <span class="hooray-doodle">Hooray! ↗</span>
                 </div>
-              </div>
+                
+                <div class="corner-doodle bottom-left"></div>
+                <div class="corner-doodle bottom-right"></div>
             </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore The Memory</a>
-          </div>
-        </div>
+        </section>
 
-      </div>
-    </div>
-  </section>
+    </main>
 
-  <!-- ---------------------------------------------------------------
-       INTAKE SECTION
-       --------------------------------------------------------------- -->
-  <section class="intake-section" id="intake">
-    <div class="container intake-grid">
-      
-      <!-- Headline & Left intro text -->
-      <div class="intake-intro">
-        <h3>Ready to start your story?</h3>
-        <p>Fill out this quick form and we’ll touch base with you.</p>
-      </div>
-
-      <!-- Center intake Form -->
-      <div class="form-box">
-        <form action="#" method="POST" onsubmit="alert('Thank you for reaching out! We will contact you soon.'); return false;">
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="Your Name" aria-label="Your Name" required>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <select class="form-control select-style" name="style_preference" aria-label="Selected Style Preference">
-              <option value="" disabled selected>Select Your Style (The Classic, The Story, etc.)</option>
-              <option value="classic">The Classic</option>
-              <option value="story">The Story</option>
-              <option value="cinematic">The Cinematic</option>
-              <option value="memory">The Memory</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="project_notes" placeholder="Tell us about your project / memories" aria-label="About your project/memories"></textarea>
-          </div>
-          <button class="btn btn-navy btn-submit" type="submit">Send Message</button>
-        </form>
-      </div>
-
-      <!-- Right column advantages -->
-      <div class="benefits">
-        <h4>Why Stories to Keep?</h4>
-        <ul class="benefits-list">
-          <li>Handcrafted design</li>
-          <li>Premium materials</li>
-          <li>Collaboration at every step</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ---------------------------------------------------------------
-       CHAT BOT WIDGET
-       --------------------------------------------------------------- -->
-  <div class="chatbot-trigger" role="button" aria-label="Open support chat" onclick="alert('Support chat is initializing!')">
-    <div class="chat-bubble">
-      <!-- Chat Conversation/Dialogue Icon -->
-      <svg viewBox="0 0 24 24">
-        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
-      </svg>
-    </div>
-    <span class="chat-text">Chat with us!</span>
-  </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Stories to Keep. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
+
+css/style.css
+
+CSS
+
+/* Core Variables & Reset */
+:root {
+    --text-color: #5E5E5E;
+    --bg-color: #FFFFFF;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header & Navigation */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed var(--text-color);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-color);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.nav-cta-btn {
+    border: 2px solid var(--text-color);
+    padding: 8px 16px;
+    font-weight: 700;
+    background: transparent;
+}
+
+.nav-cta-btn:hover {
+    background: var(--text-color);
+    color: #FFF;
+}
+
+/* Landing Layout Grid */
+.landing-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 40px 0;
+}
+
+/* Book Showcase Column */
+.book-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-mockup-card {
+    border: 2px dashed var(--text-color);
+    padding: 30px;
+    text-align: center;
+    background: #FAFAFA;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.badge-new {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: #FFF;
+    border: 2px solid var(--text-color);
+    padding: 2px 10px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.book-mockup-card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.plain-book-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
+}
+
+.book-caption {
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Hero Content Column */
+.scrapbook-frame {
+    border: 2px solid var(--text-color);
+    padding: 50px 40px;
+    position: relative;
+    background: #FFF;
+}
+
+.sub-headline {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.tagline {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.description {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.cta-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-scrapbook {
+    display: inline-block;
+    background: var(--text-color);
+    color: #FFF;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid var(--text-color);
+    box-shadow: 4px 4px 0px #000;
+    transition: transform 0.1s ease;
+}
+
+.btn-scrapbook:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.hooray-doodle {
+    position: absolute;
+    right: -90px;
+    top: -10px;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    border-top: 1px dashed var(--text-color);
+    margin-top: 60px;
+    padding: 20px 0;
+    font-size: 0.85rem;
+}
+
+/* Responsive layout adjustments */
+@media(max-width: 900px) {
+    .landing-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Stories to Keep | Our Styles & Options</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"> <link rel="stylesheet" href="css/style.css"> </head> <body> <!-- Header / Navigation --> <header class="site-header"> <div class="logo-area"> <img src="images/logo.png" alt="STK Logo" class="nav-logo"> <span class="brand-title">STORIES TO KEEP</span> </div> <nav class="main-nav"> <a href="index.html">Home</a> <a href="styles.html" class="active">Our Styles</a> <a href="how-it-works.html">How It Works</a> <a href="pricing.html">Pricing</a> <a href="about.html">About</a> <a href="contact.html">Contact</a> <a href="styles.html#upload" class="nav-cta-btn">START YOUR STORY</a> </nav> </header> <!-- Main Page 2 Content --> <main class="page2-container"> <!-- Section Title Banner --> <div class="scrapbook-banner"> <h2>OUR STYLES & BOOK OPTIONS</h2> <p>Choose the look that tells your story best.</p> </div> <!-- Styles Grid --> <div class="styles-grid"> <!-- Style 1: Classic --> <div class="style-card"> <div class="style-image-box"> <img src="images/style-classic.png" alt="Classic Book Style"> </div> <h3>Classic</h3> <p>Elegant & timeless design layout for traditional memoirs.</p> </div> <!-- Style 2: Photo Story --> <div class="style-card"> <div class="style-image-box"> <img src="images/style-photostory.png" alt="Photo Story Style"> </div> <h3>Photo Story</h3> <p>Contemporary, dynamic framing built around visual journeys.</p> </div> <!-- Style 3: Cinematic --> <div class="style-card"> <div class="style-image-box"> <img src="images/style-cinematic.png" alt="Cinematic Style"> </div> <h3>Cinematic</h3> <p>Big, beautiful landscape images with maximum visual impact.</p> </div> <!-- Style 4: Memory --> <div class="style-card"> <div class="style-image-box"> <img src="images/style-memory.png" alt="Memory Style"> </div> <h3>Memory</h3> <p>Deeply personal, nostalgic layouts filled with intricate details.</p> </div> </div> <!-- Integrated Upload Section --> <section class="upload-section" id="upload"> <div class="upload-box-border"> <h3>UPLOAD YOUR IMAGES TO START</h3> <p class="upload-sub">Drag & Drop your photos here or click to browse files.</p> <div class="drop-zone"> <span class="upload-icon">📁</span> <p>Drop your JPG, PNG, or HEIC files here</p> <button class="btn-browse">+ BROWSE FILES</button> </div> <div class="uploaded-preview-row"> <div class="polaroid-thumb"> <div class="thumb-frame"></div> <span>photo1.jpg ✓</span> </div> <div class="polaroid-thumb"> <div class="thumb-frame"></div> <span>vacation_02.png ✓</span> </div> </div> </div> </section> </main> <!-- Footer --> <footer class="site-footer"> <p>&copy; 2026 Stories to Keep. All rights reserved.</p> </footer> </body> </html>
+
+/* Page 2 Specific Styles */ .page2-container { max-width: 1100px; margin: 0 auto; padding: 20px 0; } .scrapbook-banner { border: 2px dashed var(--text-color); text-align: center; padding: 30px; margin-bottom: 40px; background: #FAFAFA; } .scrapbook-banner h2 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 8px; } .styles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 50px; } .style-card { border: 2px solid var(--text-color); padding: 20px; background: #FFF; text-align: center; box-shadow: 4px 4px 0px rgba(94, 94, 94, 0.15); } .style-image-box { width: 100%; height: 150px; background: #F4F4F4; border: 1px dashed var(--text-color); margin-bottom: 15px; display: flex; align-items: center; justify-content: center; } .style-image-box img { max-width: 100%; max-height: 100%; object-fit: cover; } .style-card h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px; } .style-card p { font-size: 0.85rem; color: #666; } /* Upload Section */ .upload-section { margin-top: 40px; } .upload-box-border { border: 2px dashed var(--text-color); padding: 40px; text-align: center; background: #FFF; } .upload-box-border h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 10px; } .upload-sub { font-size: 0.95rem; margin-bottom: 25px; color: #666; } .drop-zone { border: 2px dashed var(--text-color); padding: 30px; background: #FAFAFA; margin-bottom: 25px; } .btn-browse { background: var(--text-color); color: #FFF; border: none; padding: 10px 20px; font-weight: 700; margin-top: 15px; cursor: pointer; } .uploaded-preview-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; } .polaroid-thumb { background: #FFF; border: 1px solid var(--text-color); padding: 10px 10px 5px 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.05); font-size: 0.8rem; } .thumb-frame { width: 80px; height: 80px; background: #EEE; margin-bottom: 5px; }
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Stories To Keep</title> <style> body { font-family: serif; background-color: #fcfbfa; color: #333; margin: 0; padding: 0; } header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #fcfbfa; border-bottom: 1px solid #eee; } .logo-area { display: flex; align-items: center; gap: 10px; font-weight: bold; letter-spacing: 1px; } .logo-area img { width: 30px; height: 30px; } nav { display: flex; gap: 25px; font-size: 14px; } nav a { text-decoration: none; color: #333; } nav a.active { border-bottom: 1px solid #333; padding-bottom: 2px; } .section-title { text-align: center; font-size: 22px; letter-spacing: 2px; margin: 40px 0 20px; font-weight: normal; } /* Our Books Section */ .books-container { display: flex; justify-content: center; align-items: center; gap: 50px; margin-bottom: 50px; } .book-card { text-align: center; } .book-card img { width: 250px; height: auto; display: block; margin-bottom: 10px; } .book-card span { font-style: italic; font-size: 20px; } /* Our Styles Section */ .styles-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 60px; } .style-card { background: #fff; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; width: 180px; } .style-card img { width: 100%; height: auto; margin-bottom: 8px; } .style-card h4 { margin: 5px 0; font-size: 15px; } .style-card p { font-size: 11px; color: #777; margin: 0; } /* Formats & Sizes Section */ .formats-section { background-color: #f7f5f2; padding: 40px 20px; text-align: center; } .formats-container { display: flex; justify-content: center; gap: 40px; margin-top: 20px; } .format-group { display: flex; flex-direction: column; align-items: center; gap: 8px; } .format-label { display: flex; align-items: center; gap: 6px; font-size: 14px; } select { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; background: #fff; font-family: serif; font-size: 13px; width: 160px; } /* Features Footer Row */ .features-row { display: flex; justify-content: center; gap: 60px; padding: 30px 20px; background-color: #f7f5f2; border-top: 1px solid #eae6e0; font-size: 13px; } .feature-item { display: flex; align-items: flex-start; gap: 10px; max-width: 300px; } .feature-item img { width: 24px; height: 24px; } /* Footer */ footer { text-align: center; padding: 20px; font-size: 12px; color: #666; background-color: #f7f5f2; } </style> </head> <body> <!-- Header / Navigation --> <header> <div class="logo-area"> <img src="logo.png" alt="STK Logo"> <span>STORIES TO KEEP</span> </div> <nav> <a href="#" class="active">Our Books</a> <a href="#">How it Works</a> <a href="#">Pricing</a> <a href="#">About</a> <a href="#">Contact</a> </nav> </header> <!-- Our Books Section --> <div class="section-title">OUR BOOKS</div> <div class="books-container"> <div class="book-card"> <img src="photo-book.jpg" alt="Photo Books"> <span>Photo Books</span> </div> <!-- Optional arrow decoration mockup can go here --> <div class="book-card"> <img src="memories-book.jpg" alt="Memories"> <span>Memories</span> </div> </div> <!-- Our Styles Section --> <div class="section-title">OUR STYLES</div> <div class="styles-container"> <div class="style-card"> <img src="style-classic.jpg" alt="Classic"> <h4>Classic</h4> <p>Class a year aneles with aardonridomood book</p> </div> <div class="style-card"> <img src="style-photo-story.jpg" alt="Photo Story"> <h4>Photo Story</h4> <p>Visual storytelling crafted cleanly</p> </div> <div class="style-card"> <img src="style-cinematic.jpg" alt="Cinematic"> <h4>Cinematic</h4> <p>Dramatic layouts for immersive memories</p> </div> <div class="style-card"> <img src="style-memory.jpg" alt="Memory"> <h4>Memory</h4> <p>Colleres arechow wills, insanded ssats sencred</p> </div> </div> <!-- Book Formats & Sizes Section --> <div class="formats-section"> <div class="section-title" style="margin-top: 0;">BOOK FORMATS & SIZES</div> <div class="formats-container"> <div class="format-group"> <div class="format-label">🔲 Square</div> <select> <option>Select a Square Size</option> </select> </div> <div class="format-group"> <div class="format-label">📄 Portrait</div> <select> <option>Select a Portrait Size</option> </select> </div> <div class="format-group"> <div class="format-label">🖼️ Landscape</div> <select> <option>Select a Landscape Size</option> </select> </div> </div> </div> <!-- Features Row --> <div class="features-row"> <div class="feature-item"> <span>📖</span> <div><strong>Legacy Creation</strong> – Build a timeline of your family's story, volume by volume.</div> </div> <div class="feature-item"> <span>📦</span> <div><strong>Volume Discounts</strong>: Start with one, add more over time. Build your complete collection.</div> </div> </div> <!-- Copyright Footer --> <footer> &copy; 2026 Stories to Keep | All rights reserved. </footer> </body> </html>
+
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>How It Works, Our Styles & Pricing</title> <!-- Google Fonts for Hand-Drawn / Fun Look --> <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet"> <style> :root { --bg-color: #fcfbf9; --border-color: #2b2b2b; --text-main: #1a1a1a; --accent-pink: #ff8b8b; --accent-blue: #70a1ff; --accent-yellow: #f1f226; --accent-green: #2ed573; } * { box-sizing: border-box; margin: 0; padding: 0; } body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Patrick Hand', cursive, sans-serif; overflow-x: hidden; position: relative; padding: 30px 20px; } /* Subtle sketchy paper background texture effect */ body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(#d1d1d1 0.75px, transparent 0.75px); background-size: 24px 24px; opacity: 0.3; z-index: -1; } .page-container { max-width: 1100px; margin: 0 auto; border: 3px solid var(--border-color); border-radius: 4px; padding: 40px 30px; background: #fff; box-shadow: 8px 8px 0px rgba(0,0,0,0.08); position: relative; } /* Decorative Corners (Sketchy style corners) */ .page-container::before, .page-container::after { content: ""; position: absolute; width: 25px; height: 25px; border: 3px solid var(--border-color); } .page-container::before { top: 10px; left: 10px; border-right: none; border-bottom: none; } .page-container::after { top: 10px; right: 10px; border-left: none; border-bottom: none; } /* Header Section */ header { text-align: center; margin-bottom: 50px; position: relative; } .header-box { display: inline-block; border: 2px solid var(--border-color); padding: 15px 40px; background: #fff; position: relative; box-shadow: 4px 4px 0px rgba(0,0,0,0.1); } h1 { font-family: 'Special Elite', cursive, serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: 1px; text-transform: uppercase; } /* Doodle Elements (Sparkles, Watercolors simulation) */ .doodle-sparkle { position: absolute; font-size: 20px; } /* Steps Section (How It Works) */ .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 60px; position: relative; } .step-item { text-align: center; position: relative; padding: 10px; } .step-number { font-family: 'Special Elite', cursive; font-size: 3.5rem; color: #4a4a4a; line-height: 1; margin-bottom: 10px; display: inline-block; position: relative; } /* Sketchy arrow between steps on desktop */ @media (min-width: 992px) { .step-item:not(:last-child)::after { content: "→"; position: absolute; top: 35px; right: -25px; font-size: 2rem; color: #777; font-family: sans-serif; } } .step-title { font-weight: bold; font-size: 1.2rem; text-transform: uppercase; margin-bottom: 5px; font-family: 'Special Elite', cursive; } .step-desc { font-size: 1rem; color: #555; line-height: 1.4; } /* Pricing Section */ .pricing-section { border-top: 2px dashed #ccc; padding-top: 40px; text-align: center; } .pricing-title { font-family: 'Special Elite', cursive; font-size: 2.2rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; } .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-bottom: 30px; } .price-card { background: #fff; border: 2px solid var(--border-color); padding: 30px 20px; position: relative; box-shadow: 5px 5px 0px rgba(0,0,0,0.1); transition: transform 0.2s ease; } .price-card:hover { transform: translateY(-5px); } /* Washi tape effect on top of cards */ .price-card::before { content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 80px; height: 22px; background: rgba(255, 204, 153, 0.6); border: 1px dashed rgba(0,0,0,0.15); } .price-card:nth-child(2)::before { background: rgba(153, 204, 255, 0.6); transform: translateX(-50%) rotate(1deg); } .price-card:nth-child(3)::before { background: rgba(204, 255, 153, 0.6); transform: translateX(-50%) rotate(-1.5deg); } .card-title { font-family: 'Special Elite', cursive; font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px; } .card-price { font-size: 2rem; font-weight: bold; color: #2b2b2b; margin-bottom: 15px; } .card-details { font-size: 1.05rem; color: #666; margin-bottom: 25px; line-height: 1.5; } .btn-start { background-color: #333; color: #fff; border: 2px solid var(--border-color); padding: 10px 25px; font-family: 'Special Elite', cursive; font-size: 1rem; cursor: pointer; box-shadow: 3px 3px 0px rgba(0,0,0,0.2); transition: all 0.1s ease; text-decoration: none; display: inline-block; } .btn-start:hover { background-color: #fff; color: #333; box-shadow: 1px 1px 0px rgba(0,0,0,0.2); transform: translate(2px, 2px); } .pricing-footer-note { font-size: 0.95rem; color: #555; margin-top: 20px; font-style: italic; } /* Floating Interactive Chat Widget Simulation */ .chat-badge { position: fixed; bottom: 20px; right: 20px; background: #fff; border: 2px solid var(--border-color); padding: 8px 16px; border-radius: 20px; font-family: 'Architects Daughter', cursive; box-shadow: 3px 3px 0px rgba(0,0,0,0.15); cursor: pointer; display: flex; align-items: center; gap: 8px; z-index: 100; } .chat-badge:hover { background: #f4f4f4; } @media (max-width: 768px) { .page-container { padding: 20px 15px; } } </style> </head> <body> <div class="page-container"> <!-- Header --> <header> <div class="header-box"> <h1>How It Works, Our Styles & Pricing</h1> </div> </header> <!-- How It Works (Steps 01 - 04) --> <div class="steps-grid"> <div class="step-item"> <div class="step-number">01</div> <div class="step-title">You Share</div> <div class="step-desc">Your photographs, memories, and words.</div> </div> <div class="step-item"> <div class="step-number">02</div> <div class="step-title">We Create</div> <div class="step-desc">We organize, design and bring your story together.</div> </div> <div class="step-item"> <div class="step-number">03</div> <div class="step-title">You Review & Approve</div> <div class="step-desc">You review your book and request changes.</div> </div> <div class="step-item"> <div class="step-number">04</div> <div class="step-title">We Print</div> <div class="step-desc">Your beautiful book is professionally printed and delivered.</div> </div> </div> <!-- Pricing Section --> <section class="pricing-section"> <h2 class="pricing-title">Pricing</h2> <div class="pricing-grid"> <!-- Card 1 --> <div class="price-card"> <div class="card-title">KEEPSAKE</div> <div class="card-price">$495</div> <div class="card-details"> Up to 60 pages<br> 150-200 photos </div> <a href="#start" class="btn-start">START STORY</a> </div> <!-- Card 2 --> <div class="price-card"> <div class="card-title">STORY</div> <div class="card-price">$895</div> <div class="card-details"> Up to 120 pages<br> 300-400 photos </div> <a href="#start" class="btn-start">START STORY</a> </div> <!-- Card 3 --> <div class="price-card"> <div class="card-title">LEGACY</div> <div class="card-price">$1495</div> <div class="card-details"> Up to 200 pages<br> 500-600 photos </div> <a href="#start" class="btn-start">START STORY</a> </div> </div> <p class="pricing-footer-note"> Additional pages - $6 each. All packages include personalized design, premium printing, proof approval, and free delivery. </p> </section> </div> <!-- Fun Chat Widget --> <div class="chat-badge" onclick="alert('Chat feature opened!')"> <span>💬 Chat with us!</span> </div> </body> </html>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>What's your story?</title> <!-- Google Fonts for Hand-Drawn / Fun Look --> <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet"> <style> :root { --bg-color: #f7f6f2; --border-color: #2b2b2b; --text-main: #1a1a1a; } * { box-sizing: border-box; margin: 0; padding: 0; } body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Patrick Hand', cursive, sans-serif; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; } /* The Exact Reference Container */ .reference-banner { width: 100%; max-width: 960px; background: #f4f3f0; border: 2px solid var(--border-color); border-radius: 4px; padding: 55px 40px; position: relative; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.06); display: flex; flex-direction: column; align-items: center; text-align: center; overflow: hidden; } /* Top wavy/sketchy dividing line from reference */ .reference-banner::before { content: ""; position: absolute; top: 12px; left: 20px; right: 20px; height: 3px; background: repeating-linear-gradient(90deg, #2b2b2b, #2b2b2b 8px, transparent 8px, transparent 14px); opacity: 0.35; border-radius: 2px; } /* Center Content Area */ .content-area { position: relative; z-index: 2; max-width: 580px; margin-top: 5px; } h2 { font-family: 'Special Elite', cursive, serif; font-size: clamp(2.2rem, 3.8vw, 3rem); margin-bottom: 12px; letter-spacing: 0.5px; } .description { font-size: 1.15rem; color: #333; line-height: 1.45; margin-bottom: 28px; font-family: 'Patrick Hand', cursive; } /* Action Button */ .btn-start { background-color: #3b3b3b; color: #fff; border: 2px solid var(--border-color); padding: 13px 32px; font-family: 'Special Elite', cursive; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; box-shadow: 3px 3px 0px rgba(0,0,0,0.25); transition: all 0.1s ease; display: inline-block; text-decoration: none; } .btn-start:hover { background-color: #fff; color: #3b3b3b; box-shadow: 1px 1px 0px rgba(0,0,0,0.25); transform: translate(2px, 2px); } /* Carousel dots */ .carousel-dots { display: flex; justify-content: center; gap: 7px; margin-top: 32px; } .dot { width: 7px; height: 7px; background-color: #b5b5b5; border-radius: 50%; } .dot.active { background-color: #3b3b3b; } /* Left Side Doodles */ .doodle-yay { position: absolute; left: 55px; top: 80px; font-family: 'Architects Daughter', cursive; font-size: 1.8rem; transform: rotate(-10deg); color: #1a1a1a; font-weight: bold; } .watercolor-cluster { position: absolute; left: 35px; bottom: 25px; display: flex; gap: 8px; align-items: flex-end; opacity: 0.85; } .blob { width: 32px; height: 22px; border-radius: 50%; filter: blur(1px); } .blob.yellow { background-color: #ffeaa7; width: 26px; height: 20px; } .blob.blue { background-color: #74b9ff; } .blob.coral { background-color: #fab1a0; width: 30px; height: 24px; } .sketch-clips { position: absolute; left: 85px; bottom: 42px; font-size: 1.25rem; transform: rotate(25deg); } .sketch-dots-left { position: absolute; left: 45px; top: 135px; font-size: 0.9rem; opacity: 0.7; } .sketch-loops { position: absolute; left: 190px; bottom: 22px; font-family: 'Architects Daughter', cursive; font-size: 1.25rem; letter-spacing: 2px; } .sketch-star-left { position: absolute; left: 170px; bottom: 75px; font-size: 1.1rem; } /* Right Side Doodles */ .doodle-sparkles-right { position: absolute; right: 55px; top: 45px; font-size: 1.1rem; } .doodle-hearts { position: absolute; right: 45px; top: 90px; display: flex; flex-direction: column; gap: 6px; font-size: 1.15rem; color: #2b2b2b; } .doodle-slashes-right { position: absolute; right: 80px; top: 30px; font-size: 1rem; transform: rotate(-15deg); opacity: 0.8; } /* Chat bubble element matching reference */ .chat-bubble-ref { position: absolute; right: 75px; bottom: 22px; background: #fff; border: 2px solid var(--border-color); padding: 9px 20px; border-radius: 24px; font-family: 'Architects Daughter', cursive; font-size: 1.05rem; box-shadow: 3px 3px 0px rgba(0,0,0,0.15); display: flex; align-items: center; cursor: pointer; transition: transform 0.1s ease; } .chat-bubble-ref:hover { transform: scale(1.02); } .chat-bubble-ref::after { content: ""; position: absolute; bottom: -9px; right: 28px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 9px solid var(--border-color); } /* Floating dark chat icon button matching bottom right */ .floating-chat-icon { position: absolute; right: 22px; bottom: 24px; width: 38px; height: 38px; background: #444; border: 2px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.9rem; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.1s ease; } .floating-chat-icon:hover { transform: scale(1.05); } @media (max-width: 800px) { .doodle-yay, .watercolor-cluster, .sketch-clips, .sketch-loops, .doodle-hearts, .chat-bubble-ref, .sketch-dots-left, .sketch-star-left, .doodle-sparkles-right, .doodle-slashes-right { display: none; /* Hide decorative absolute doodles on compact screens for clean layout */ } .reference-banner { padding: 40px 20px; } } </style> </head> <body> <div class="reference-banner"> <!-- Left Side Hand-Drawn Elements --> <div class="doodle-yay">YAY!</div> <div class="sketch-dots-left">° o .</div> <div class="sketch-clips">📎 📎</div> <div class="sketch-star-left">✦</div> <div class="watercolor-cluster"> <div class="blob yellow"></div> <div class="blob blue"></div> <div class="blob coral"></div> </div> <div class="sketch-loops">eeel</div> <!-- Center Main Content --> <div class="content-area"> <h2>What's your story?</h2> <p class="description">You're one conversation away from turning your cherished memories and photographs into a professionally designed heirloom book.</p> <a href="#start" class="btn-start" onclick="event.preventDefault(); alert('Starting your story...');">START YOUR STORY</a> <div class="carousel-dots"> <div class="dot"></div> <div class="dot active"></div> </div> </div> <!-- Right Side Hand-Drawn Elements --> <div class="doodle-slashes-right">/ /</div> <div class="doodle-sparkles-right">✦ ✨</div> <div class="doodle-hearts"> <span>♥</span> <span>♥</span> </div> <!-- Interactive Chat Components --> <div class="chat-bubble-ref" onclick="alert('Chat opened!')"> Chat with us! </div> <div class="floating-chat-icon" onclick="alert('Chat opened!')"> 💬 </div> </div> </body> </html>
