@@ -1,816 +1,1418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stories to Keep | Photobooks</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-light: #f6f5f1;
-      --navy-primary: #122d42;
-      --navy-dark: #091c2c;
-      --navy-light: #1c4666;
-      --text-dark: #122d42;
-      --text-body: #333333;
-      --text-muted: #555555;
-      --white: #ffffff;
-      --border-color: #d1d9e0;
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(18, 45, 66, 0.08);
-      --border-radius: 8px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-body);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
-    }
-
-    button, .btn {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-navy {
-      background-color: var(--navy-primary);
-      color: var(--white);
-    }
-
-    .btn-navy:hover {
-      background-color: var(--navy-dark);
-      transform: translateY(-1px);
-    }
-
-    header {
-      background-color: var(--bg-light);
-      border-bottom: 1.5px solid rgba(18, 45, 66, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 80px;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo-img {
-      width: 52px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-img svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .brand-name {
-      font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 1.8px;
-      color: var(--navy-primary);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--navy-primary);
-      opacity: 0.85;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: var(--navy-dark);
-    }
-
-    .btn-cta {
-      padding: 10px 22px;
-      font-size: 0.9rem;
-      border-radius: 4px;
-    }
-
-    .hero {
-      background-color: var(--navy-primary);
-      color: var(--white);
-      padding: 68px 0 108px 0;
-    }
-
-    .hero-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-
-    .hero-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 500;
-      line-height: 1.15;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 300;
-      opacity: 0.85;
-    }
-
-    .selector-widget {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: 50px;
-      padding: 6px 16px;
-      gap: 14px;
-      font-size: 0.825rem;
-      letter-spacing: 0.5px;
-      font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .format-options {
-      display: flex;
-      gap: 8px;
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 4px;
-      border-radius: 30px;
-    }
-
-    .format-btn {
-      background: none;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .format-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: none;
-      stroke: var(--white);
-      stroke-width: 2px;
-      opacity: 0.6;
-    }
-
-    .format-btn.active {
-      background-color: var(--white);
-    }
-
-    .format-btn.active svg {
-      stroke: var(--navy-primary);
-      opacity: 1;
-    }
-
-    .format-label {
-      opacity: 0.8;
-      text-transform: capitalize;
-      font-size: 0.85rem;
-    }
-
-    .styles-section {
-      margin-top: -60px;
-      padding-bottom: 72px;
-    }
-
-    .styles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border-color);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .card-header-area {
-      padding: 24px 18px 8px 18px;
-      text-align: center;
-    }
-
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--navy-primary);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .card-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      min-height: 42px;
-      padding: 0 12px;
-      line-height: 1.4;
-    }
-
-    .card-img-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background-color: #faf9f5;
-      border-top: 1px solid rgba(18, 45, 66, 0.03);
-      border-bottom: 1px solid rgba(18, 45, 66, 0.03);
-    }
-
-    .card-action {
-      padding: 16px 20px 20px 20px;
-      background-color: var(--white);
-    }
-
-    .btn-card {
-      width: 100%;
-      padding: 12px;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      border-radius: 4px;
-    }
-
-    .book-mockup-graphic {
-      width: 100%;
-      max-width: 184px;
-      height: 114px;
-      background-color: #ece9df;
-      box-shadow: 0 4px 12px rgba(18, 45, 66, 0.12);
-      border-radius: 3px 6px 6px 3px;
-      position: relative;
-      display: flex;
-      padding: 4px;
-      border: 1px solid rgba(18, 45, 66, 0.15);
-    }
-
-    .book-mockup-graphic::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(0, 0, 0, 0.18);
-      box-shadow: 0 0 1px rgba(255, 255, 255, 0.4);
-      transform: translateX(-50%);
-    }
-
-    .page-half {
-      flex: 1;
-      height: 100%;
-      padding: 4px 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      justify-content: center;
-    }
-
-    .page-img {
-      background: #c3b9ad;
-      width: 100%;
-      height: 60%;
-      border-radius: 1px;
-      box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
-    }
-
-    .page-text {
-      background: #aaa093;
-      height: 3px;
-      width: 85%;
-      border-radius: 1px;
-    }
-
-    .page-text-short {
-      background: #aaa093;
-      height: 3px;
-      width: 50%;
-      border-radius: 1px;
-    }
-
-    .intake-section {
-      background-color: var(--white);
-      border-top: 1.5px solid rgba(18, 45, 66, 0.08);
-      padding: 64px 0 72px 0;
-    }
-
-    .intake-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 2fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .intake-intro h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.25rem;
-      color: var(--navy-primary);
-      margin-bottom: 12px;
-      line-height: 1.25;
-      font-weight: 500;
-    }
-
-    .intake-intro p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .form-box form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      outline: none;
-      transition: all 0.2s ease;
-    }
-
-    .form-control:focus {
-      border-color: var(--navy-primary);
-      background-color: var(--white);
-      box-shadow: 0 0 0 3px rgba(18, 45, 66, 0.05);
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .select-style {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23122d42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      background-size: 14px;
-      padding-right: 40px;
-    }
-
-    .btn-submit {
-      padding: 14px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-radius: 4px;
-    }
-
-    .benefits h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      color: var(--navy-primary);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .benefits-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .benefits-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
-    .benefits-list li::before {
-      content: "•";
-      color: var(--navy-primary);
-      font-weight: bold;
-      font-size: 1.5rem;
-      line-height: 0.8;
-    }
-
-    .chatbot-trigger {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: var(--white);
-      box-shadow: 0 6px 24px rgba(18, 45, 66, 0.15);
-      border-radius: 50px;
-      padding: 8px 18px 8px 8px;
-      z-index: 1000;
-      cursor: pointer;
-      border: 1.5px solid var(--border-color);
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .chatbot-trigger:hover {
-      transform: translateY(-3px) scale(1.02);
-    }
-
-    .chat-bubble {
-      background: linear-gradient(135deg, #e5bd3c, #cb9a1c);
-      color: var(--white);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: inset 0 -2px 5px rgba(0,0,0,0.1);
-    }
-
-    .chat-bubble svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--white);
-    }
-
-    .chat-text {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--navy-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    @media (max-width: 992px) {
-      .intake-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .benefits {
-        border-top: 1px solid var(--border-color);
-        padding-top: 32px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-
-      .selector-widget {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-      }
-
-      .styles-section {
-        margin-top: -30px;
-      }
-
-      .styles-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories to Keep</title>
+    <!-- Importing Google Fonts to match the classic look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            color: #222;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Outer sketch border frame */
+        .page-frame {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;
+            min-height: 680px;
+            border: 2px solid #333;
+            padding: 30px 50px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Corner vector decorations (simulated using borders/styling) */
+        .page-frame::before, .page-frame::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #333;
+        }
+        .page-frame::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .page-frame::after {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-badge {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        .btn-nav-start {
+            background-color: #555;
+            color: #fff !important;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            padding: 20px 0;
+        }
+
+        /* Left Side: Book mockup */
+        .book-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .book {
+            width: 260px;
+            height: 370px;
+            background: #f4f4f4;
+            border-radius: 4px 10px 10px 4px;
+            box-shadow: -15px 15px 30px rgba(0,0,0,0.15), inset 4px 0 10px rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 12px solid #e0e0e0; /* Spine shadow effect */
+        }
+
+        .book-cover-badge {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #555;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: #444;
+            padding: 10px;
+        }
+
+        .book-cover-badge span:first-child {
+            font-size: 9px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .book-cover-badge span:nth-child(2) {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .book-note {
+            position: absolute;
+            bottom: 30px;
+            left: -40px;
+            font-family: 'Kalam', cursive;
+            font-size: 15px;
+            color: #333;
+            max-width: 160px;
+            line-height: 1.3;
+            transform: rotate(-3deg);
+        }
+
+        /* Right Side: Copywriting & CTA */
+        .hero-section {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .subtitle-top {
+            font-size: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .main-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            color: #111;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .cta-container {
+            position: relative;
+        }
+
+        .btn-cta {
+            background: #fff;
+            border: 2px solid #333;
+            padding: 14px 28px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 3px 3px 0px #333;
+            transition: all 0.1s ease;
+        }
+
+        .btn-cta:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #333;
+        }
+
+        .hooray-note {
+            position: absolute;
+            right: -95px;
+            top: -10px;
+            font-family: 'Kalam', cursive;
+            font-size: 20px;
+            transform: rotate(10deg);
+            color: #222;
+        }
+
+        /* Bottom Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            font-size: 16px;
+            margin-top: 4px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-section {
+                align-items: center;
+            }
+            .description {
+                text-align: center;
+            }
+            .hooray-note {
+                right: 0;
+                top: 55px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container nav-container">
-      <div class="logo-area">
-        <div class="logo-img">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="50" cy="50" r="47" fill="none" stroke="#122d42" stroke-width="1.8" />
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#122d42" stroke-width="0.8" />
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#122d42" stroke-width="0.5" />
-            <circle cx="50" cy="50" r="45.5" fill="none" stroke="#122d42" stroke-width="0.75" stroke-dasharray="1 2.5" />
-            <path d="M28 81 C34 86, 50 88, 50 88 C50 88, 66 86, 72 81" fill="none" stroke="#122d42" stroke-width="1" />
-            <circle cx="50" cy="88" r="1.5" fill="#122d42" />
-            <circle cx="36" cy="84.2" r="1.2" fill="#122d42" />
-            <circle cx="64" cy="84.2" r="1.2" fill="#122d42" />
-            <defs>
-              <path id="top-curve" d="M 12.5 50 A 37.5 37.5 0 0 1 87.5 50" fill="none" />
-            </defs>
-            <text font-family="'Cinzel', serif" font-weight="800" font-size="8.8" fill="#122d42" letter-spacing="1.2">
-              <textPath href="#top-curve" startOffset="50%" text-anchor="middle">STORIES TO KEEP</textPath>
-            </text>
-            <path d="M 18.5 50 A 31.5 31.5 0 0 1 81.5 50" fill="none" stroke="#122d42" stroke-width="1" />
-            <path d="M 22 50 A 28 28 0 0 1 78 50" fill="none" stroke="#122d42" stroke-width="0.5" />
-            <polygon points="11.5,50 13,51.5 14.5,50 13,48.5" fill="#122d42" />
-            <polygon points="85.5,50 87,51.5 88.5,50 87,48.5" fill="#122d42" />
-            <path d="M27.5 47 Q34 33 42 45.2" fill="none" stroke="#122d42" stroke-width="0.9" />
-            <path d="M23.5 45.5 Q35 24 43 43.5" fill="none" stroke="#122d42" stroke-width="0.75" />
-            <path d="M72.5 47 Q66 33 58 45.2" fill="none" stroke="#122d42" stroke-width="0.9" />
-            <path d="M76.5 45.5 Q65 24 57 43.5" fill="none" stroke="#122d42" stroke-width="0.75" />
-            <g transform="translate(0, 4.5)">
-              <path d="M 50 13 L 56.5 30.5 L 56.5 43.5 C 56.5 46.5 50 48.5 50 48.5 C 50 48.5 43.5 46.5 43.5 43.5 L 43.5 30.5 Z" fill="#122d42" stroke="#122d42" stroke-width="1" stroke-linejoin="round"/>
-              <line x1="50" y1="13.2" x2="50" y2="35.5" stroke="#ffffff" stroke-width="1.2" />
-              <circle cx="50" cy="33.2" r="1.4" fill="#ffffff" />
-              <path d="M 45.5 43.5 L 54.5 43.5" stroke="#ffffff" stroke-width="0.8" />
-              <path d="M 47.5 40.5 L 52.5 40.5" stroke="#ffffff" stroke-width="0.6" />
-              <path d="M 46 30 Q 50 24.5 54 30" fill="none" stroke="#ffffff" stroke-width="0.6" />
-            </g>
-            <text x="50.2" y="74.5" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#122d42" text-anchor="middle" letter-spacing="1">STK</text>
-            <line x1="27" y1="79.5" x2="73" y2="79.5" stroke="#122d42" stroke-width="2" />
-            <polygon points="50,91.2 51,92.7 50,94.2 49,92.7" fill="#122d42" />
-          </svg>
-        </div>
-        <span class="brand-name">STORIES TO KEEP</span>
-      </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#styles">Our Styles</a></li>
-          <li><a href="#how">How it Works</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#about">About Us</a></li>
-        </ul>
-        <a href="#intake" class="btn btn-navy btn-cta">Start Your Book</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1 class="hero-title">Everyone has a story to tell.<br>What is yours?</h1>
-        <p class="hero-subtitle">Choose from Our top-rated photo book designs</p>
-      </div>
-
-      <div class="selector-widget">
-        <span class="format-label">Landscape</span>
-        <div class="format-options">
-          <button class="format-btn" title="Landscape">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /></svg>
-          </button>
-          <button class="format-btn active" title="Square">
-            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" /></svg>
-          </button>
-          <button class="format-btn" title="Portrait">
-            <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2" /></svg>
-          </button>
-        </div>
-        <span class="format-label">Portrait</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="styles-section" id="styles">
-    <div class="container">
-      <div class="styles-grid">
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE CLASSIC</h2>
-            <p class="card-subtitle">Elegant, clean & timeless</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic">
-              <div class="page-half" style="align-items: center; justify-content: center;">
-                <div class="page-img" style="width: 75%; height: 75%; background-color: #bfb09f;"></div>
-              </div>
-              <div class="page-half" style="align-items: center; justify-content: center;">
-                <div class="page-img" style="width: 75%; height: 75%; background-color: #aaa296;"></div>
-              </div>
+    <div class="page-frame">
+        <!-- Header Navigation -->
+        <header>
+            <div class="logo-area">
+                <div class="logo-badge">STK</div>
+                <div class="brand-title">STORIES TO KEEP</div>
             </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore Classic</a>
-          </div>
-        </div>
+            <nav>
+                <a href="#">Our Books</a>
+                <a href="#">How It Works</a>
+                <a href="#">Pricing</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#" class="btn-nav-start">START YOUR STORY</a>
+            </nav>
+        </header>
 
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE STORY</h2>
-            <p class="card-subtitle">Photos + text flowing like a magazine</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic">
-              <div class="page-half">
-                <div class="page-img" style="height: 45%;"></div>
-                <div class="page-text"></div>
-                <div class="page-text-short"></div>
-              </div>
-              <div class="page-half" style="flex-direction: row; flex-wrap: wrap; gap: 4px; padding: 4px;">
-                <div class="page-img" style="width: 45%; height: 45%;"></div>
-                <div class="page-img" style="width: 45%; height: 45%; background-color: #9c8e7e;"></div>
-                <div class="page-text" style="width: 100%; height: 3px;"></div>
-                <div class="page-text-short" style="width: 60%; height: 3px;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore The Story</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE CINEMATIC</h2>
-            <p class="card-subtitle">Big, beautiful images with maximum impact</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic" style="padding: 0;">
-              <div class="page-img" style="width: 100%; height: 100%; border-radius: 0; background: linear-gradient(to right, #4a5453, #2b3a42, #4a5453);"></div>
-            </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore Cinematic</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header-area">
-            <h2 class="card-title">THE MEMORY</h2>
-            <p class="card-subtitle">Personal, nostalgic & filled with details</p>
-          </div>
-          <div class="card-img-container">
-            <div class="book-mockup-graphic" style="background-color: #dfdcd3;">
-              <div class="page-half" style="gap: 3px; padding: 4px;">
-                <div style="display: flex; gap: 3px; height: 50%;">
-                  <div class="page-img" style="background-color: #a7a296; width: 50%;"></div>
-                  <div class="page-img" style="background-color: #8c887d; width: 50%;"></div>
+        <!-- Main Section -->
+        <div class="main-content">
+            <!-- Left: Book Visual -->
+            <div class="book-section">
+                <div class="book">
+                    <div class="book-cover-badge">
+                        <span>STORIES TO KEEP</span>
+                        <span>STK</span>
+                    </div>
                 </div>
-                <div class="page-text" style="width: 90%;"></div>
-                <div class="page-img" style="background-color: #726e63; height: 35%;"></div>
-              </div>
-              <div class="page-half" style="gap: 3px; padding: 4px;">
-                <div class="page-img" style="background-color: #7b7e75; height: 40%;"></div>
-                <div class="page-text" style="width: 100%;"></div>
-                <div style="display: flex; gap: 3px; height: 45%;">
-                  <div class="page-img" style="background-color: #a19a8f; width: 45%;"></div>
-                  <div class="page-text-short" style="width: 45%;"></div>
+                <div class="book-note">
+                    Subtle & classic:<br>Just our logo on the cover!
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="card-action">
-            <a href="#intake" class="btn btn-navy btn-card">Explore The Memory</a>
-          </div>
+
+            <!-- Right: Text & Action -->
+            <div class="hero-section">
+                <div class="subtitle-top">— Everyone has a story to tell —</div>
+                <h1 class="main-heading">WHAT IS YOURS?</h1>
+                <p class="description">
+                    Your memories. Your story. Beautifully preserved.<br>
+                    We turn your photos, memories, and stories into beautiful books made to be held, shared, and kept for generations.
+                </p>
+                <div class="cta-container">
+                    <button class="btn-cta">START YOUR STORY</button>
+                    <div class="hooray-note">Hooray!</div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Footer / Scroll Prompt -->
+        <div class="scroll-indicator">
+            Explore our books <span>↓</span>
+            <div style="font-size: 12px; color: #777; margin-top: 2px;">Scroll to start</div>
+        </div>
     </div>
-  </section>
 
-  <section class="intake-section" id="intake">
-    <div class="container intake-grid">
-      <div class="intake-intro">
-        <h3>Ready to start your story?</h3>
-        <p>Fill out this quick form and we’ll touch base with you.</p>
-      </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories to Keep - Our Books</title>
+    <!-- Importing Google Fonts to match the classic and script look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      <div class="form-box">
-        <form action="#" method="POST" onsubmit="alert('Thank you for reaching out! We will contact you soon.'); return false;">
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="Your Name" aria-label="Your Name" required>
+        body {
+            background-color: #fcfcfc;
+            color: #222;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Outer sketch border frame matching page 1 */
+        .page-frame {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;
+            min-height: 720px;
+            border: 2px solid #333;
+            padding: 30px 50px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Corner vector decorations */
+        .page-frame::before, .page-frame::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #333;
+        }
+        .page-frame::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .page-frame::after {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-badge {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #333;
+            padding-bottom: 2px;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        /* SECTION 1: OUR BOOKS (Top Grid) */
+        .our-books-section {
+            margin-bottom: 40px;
+        }
+
+        .books-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .showcase-item {
+            text-align: center;
+        }
+
+        .book-preview-card {
+            background: #f7f5f0;
+            border: 1px solid #dcd6cd;
+            padding: 15px;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.06);
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .open-book-img {
+            width: 240px;
+            height: 140px;
+            background: #e9e5de;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .memories-img-grid {
+            width: 180px;
+            height: 140px;
+            background: #fff;
+            border: 1px solid #ccc;
+            display: flex;
+            gap: 5px;
+            padding: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mem-photo {
+            width: 50%;
+            height: 100%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .item-label {
+            font-family: 'Kalam', cursive;
+            font-size: 22px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* SECTION 2: OUR STYLES */
+        .our-styles-section {
+            margin-bottom: 40px;
+        }
+
+        .styles-grid {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .style-card {
+            background: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 160px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border-radius: 2px;
+        }
+
+        .style-card.dark {
+            background: #2a2a2a;
+            color: #fff;
+            border-color: #222;
+        }
+
+        .style-thumbnail {
+            width: 100%;
+            height: 90px;
+            background: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 8px;
+            border: 1px solid #d0d0d0;
+        }
+
+        .style-card.dark .style-thumbnail {
+            background: #1a1a1a;
+            color: #aaa;
+            border-color: #444;
+        }
+
+        .style-name {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .style-desc {
+            font-size: 10px;
+            color: #666;
+            line-height: 1.2;
+        }
+
+        .style-card.dark .style-desc {
+            color: #bbb;
+        }
+
+        /* SECTION 3: BOOK FORMATS & SIZES */
+        .formats-section {
+            margin-bottom: 30px;
+        }
+
+        .formats-options {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .format-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            accent-color: #333;
+            width: 16px;
+            height: 16px;
+        }
+
+        .format-select {
+            padding: 8px 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            background: #fff;
+            width: 180px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+
+        /* FOOTER INFO BAR */
+        .page-footer-info {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #444;
+        }
+
+        .footer-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .books-showcase, .styles-grid, .formats-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            .page-footer-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-frame">
+        <!-- Header Navigation -->
+        <header>
+            <div class="logo-area">
+                <div class="logo-badge">STK</div>
+                <div class="brand-title">STORIES TO KEEP</div>
             </div>
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="Email Address" aria-label="Email Address" required>
+            <nav>
+                <a href="#" class="active">Our Books</a>
+                <a href="#">How it Works</a>
+                <a href="#">Pricing</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Section 1: Our Books -->
+        <div class="our-books-section">
+            <h2 class="section-title">OUR BOOKS</h2>
+            <div class="books-showcase">
+                <div class="showcase-item">
+                    <div class="book-preview-card">
+                        <div class="open-book-img">[ Open Photo Book Preview ]</div>
+                    </div>
+                    <div class="item-label">Photo Books</div>
+                </div>
+                <div class="showcase-item">
+                    <div class="book-preview-card">
+                        <div class="memories-img-grid">
+                            <div class="mem-photo">Photo</div>
+                            <div class="mem-photo">Photo</div>
+                        </div>
+                    </div>
+                    <div class="item-label">Memories</div>
+                </div>
             </div>
-          </div>
-          <div class="form-group">
-            <select class="form-control select-style" name="style_preference" aria-label="Selected Style Preference">
-              <option value="" disabled selected>Select Your Style (The Classic, The Story, etc.)</option>
-              <option value="classic">The Classic</option>
-              <option value="story">The Story</option>
-              <option value="cinematic">The Cinematic</option>
-              <option value="memory">The Memory</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="project_notes" placeholder="Tell us about your project / memories" aria-label="About your project/memories"></textarea>
-          </div>
-          <button class="btn btn-navy btn-submit" type="submit">Send Message</button>
-        </form>
-      </div>
+        </div>
 
-      <div class="benefits">
-        <h4>Why Stories to Keep?</h4>
-        <ul class="benefits-list">
-          <li>Handcrafted design</li>
-          <li>Premium materials</li>
-          <li>Collaboration at every step</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <!-- Section 2: Our Styles -->
+        <div class="our-styles-section">
+            <h2 class="section-title">OUR STYLES</h2>
+            <div class="styles-grid">
+                <div class="style-card">
+                    <div class="style-thumbnail">Classic Cover</div>
+                    <div class="style-name">Classic</div>
+                    <div class="style-desc">Clean & year timeless with standard motif book</div>
+                </div>
+                <div class="style-card">
+                    <div class="style-thumbnail">Photo Story</div>
+                    <div class="style-name">Photo Story</div>
+                    <div class="style-desc">Rich narrative layout framing imagery</div>
+                </div>
+                <div class="style-card dark">
+                    <div class="style-thumbnail">Cinematic</div>
+                    <div class="style-name">Cinematic</div>
+                    <div class="style-desc">Dramatic widescreen presentation style</div>
+                </div>
+                <div class="style-card">
+                    <div class="style-thumbnail">Memory Collage</div>
+                    <div class="style-name">Memory</div>
+                    <div class="style-desc">Collages & rich details expanded seamlessly</div>
+                </div>
+            </div>
+        </div>
 
-  <div class="chatbot-trigger" role="button" aria-label="Open support chat" onclick="alert('Support chat is initializing!')">
-    <div class="chat-bubble">
-      <svg viewBox="0 0 24 24">
-        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
-      </svg>
+        <!-- Section 3: Book Formats & Sizes -->
+        <div class="formats-section">
+            <h2 class="section-title">BOOK FORMATS & SIZES</h2>
+            <div class="formats-options">
+                <div class="format-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" checked> Square
+                    </label>
+                    <select class="format-select">
+                        <option>Select a Square Size</option>
+                        <option>8 x 8 in</option>
+                        <option>10 x 10 in</option>
+                        <option>12 x 12 in</option>
+                    </select>
+                </div>
+                <div class="format-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Portrait
+                    </label>
+                    <select class="format-select">
+                        <option>Select a Portrait Size</option>
+                        <option>8 x 10 in</option>
+                        <option>A4 Format</option>
+                    </select>
+                </div>
+                <div class="format-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Landscape
+                    </label>
+                    <select class="format-select">
+                        <option>Select a Landscape Size</option>
+                        <option>10 x 8 in</option>
+                        <option>11 x 8.5 in</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Features bar -->
+        <div class="page-footer-info">
+            <div class="footer-feature">
+                <span>📖</span> <strong>Legacy Creation</strong> – Build a timeline of your family's story, volume by volume.
+            </div>
+            <div class="footer-feature">
+                <span>📦</span> <strong>Volume Discounts:</strong> Start with one, add more over time. Build your complete collection.
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2026 Stories to Keep | All rights reserved.
+        </div>
     </div>
-    <span class="chat-text">Chat with us!</span>
-  </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories to Keep - How It Works & Pricing</title>
+    <!-- Importing Google Fonts to match the classic, script, and title look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            color: #222;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Outer sketch border frame matching previous pages */
+        .page-frame {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;
+            min-height: 750px;
+            border: 2px solid #333;
+            padding: 30px 50px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Corner vector decorations */
+        .page-frame::before, .page-frame::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #333;
+        }
+        .page-frame::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .page-frame::after {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        /* Top Banner Title */
+        .banner-title-box {
+            position: relative;
+            border: 2px solid #333;
+            text-align: center;
+            padding: 15px 20px;
+            margin-bottom: 40px;
+            background: #fff;
+        }
+
+        .banner-title-box::before, .banner-title-box::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #333;
+        }
+        .banner-title-box::before {
+            top: -6px;
+            left: -6px;
+            border-right: none;
+            border-bottom: none;
+            background: #fff;
+        }
+        .banner-title-box::after {
+            top: -6px;
+            right: -6px;
+            border-left: none;
+            border-bottom: none;
+            background: #fff;
+        }
+
+        .banner-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #111;
+        }
+
+        /* SECTION 1: HOW IT WORKS (4 Steps) */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: left;
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .step-number {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .step-icon-sketch {
+            font-size: 24px;
+        }
+
+        .step-title {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* SECTION 2: PRICING CARDS WRAPPED IN SKETCH BORDER */
+        .pricing-section-frame {
+            position: relative;
+            border: 2px solid #333;
+            padding: 35px 20px 25px 20px;
+            margin-bottom: 30px;
+            background: #fff;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .price-card {
+            background: #fdfdfd;
+            border: 2px solid #333;
+            width: 260px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .plan-name {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .plan-specs {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-price-action {
+            background: #555;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px #222;
+        }
+
+        .pricing-footer-note {
+            text-align: center;
+            font-size: 13px;
+            color: #333;
+            border-top: 1px dashed #ccc;
+            padding-top: 15px;
+        }
+
+        /* BOTTOM CTA & FOOTER */
+        .bottom-action-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-main-cta {
+            background: #666;
+            color: #fff;
+            border: 2px solid #333;
+            padding: 12px 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            box-shadow: 3px 3px 0px #333;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+        }
+
+        /* Floating Chat Widget Mockup */
+        .chat-widget {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: #fff;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-family: 'Kalam', cursive;
+            font-size: 14px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-dot {
+            width: 8px;
+            height: 8px;
+            background: #444;
+            border-radius: 50%;
+        }
+
+        /* Responsive Layout Adjustments */
+        @media (max-width: 900px) {
+            .steps-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .pricing-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-frame">
+        <!-- Top Sketched Banner -->
+        <div class="banner-title-box">
+            <h1 class="banner-title">HOW IT WORKS, OUR STYLES & PRICING</h1>
+        </div>
+
+        <!-- Section 1: How It Works Steps -->
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-header">
+                    <span class="step-number">01</span>
+                    <span class="step-icon-sketch">☁️⬆️</span>
+                </div>
+                <div class="step-title">You Share:</div>
+                <div class="step-desc">Your photographs, memories, and words.</div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span class="step-number">02</span>
+                    <span class="step-icon-sketch">📖✍️</span>
+                </div>
+                <div class="step-title">We Create:</div>
+                <div class="step-desc">We organize, design and bring your story together.</div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span class="step-number">03</span>
+                    <span class="step-icon-sketch">📖🔍</span>
+                </div>
+                <div class="step-title">You Review & Approve:</div>
+                <div class="step-desc">You review your book and request changes.</div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span class="step-number">04</span>
+                    <span class="step-icon-sketch">📚🚚</span>
+                </div>
+                <div class="step-title">We Print:</div>
+                <div class="step-desc">Your beautiful book is professionally printed and delivered.</div>
+            </div>
+        </div>
+
+        <!-- Section 2: Pricing Tiers inside Sketched Box -->
+        <div class="pricing-section-frame">
+            <div class="pricing-grid">
+                <!-- Tier 1: Keepsake -->
+                <div class="price-card">
+                    <div class="plan-name">KEEPSAKE</div>
+                    <div class="plan-price">$495</div>
+                    <div class="plan-specs">
+                        Up to 60 pages<br>
+                        150-400 photos
+                    </div>
+                    <button class="btn-price-action">START STORY</button>
+                </div>
+
+                <!-- Tier 2: Story -->
+                <div class="price-card">
+                    <div class="plan-name">STORY</div>
+                    <div class="plan-price">$895</div>
+                    <div class="plan-specs">
+                        Up to 120 pages<br>
+                        300-400 photos
+                    </div>
+                    <button class="btn-price-action">START STORY</button>
+                </div>
+
+                <!-- Tier 3: Legacy -->
+                <div class="price-card">
+                    <div class="plan-name">LEGACY</div>
+                    <div class="plan-price">$1495</div>
+                    <div class="plan-specs">
+                        Up to 200 pages<br>
+                        500-600 photos
+                    </div>
+                    <button class="btn-price-action">START STORY</button>
+                </div>
+            </div>
+
+            <div class="pricing-footer-note">
+                Additional pages - $6 each. All packages include personalized design, premium printing, proof approval, and free delivery.
+            </div>
+        </div>
+
+        <!-- Bottom Action CTA -->
+        <div class="bottom-action-container">
+            <button class="btn-main-cta">Start Your Story</button>
+        </div>
+
+        <!-- Footer Copyright -->
+        <div class="copyright">
+            Copyright © 2022 Keeset Inc. All rights reserved.
+        </div>
+
+        <!-- Floating Chat Support Widget -->
+        <div class="chat-widget">
+            <div class="chat-dot"></div> Chat with us!
+        </div>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories to Keep - What's Your Story?</title>
+    <!-- Importing Google Fonts to match previous pages -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            color: #222;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Outer sketch border frame matching the website's theme */
+        .page-frame {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;
+            min-height: 450px;
+            border: 2px solid #333;
+            padding: 50px 40px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Top sketch border line curve effect */
+        .page-frame::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50px;
+            right: 50px;
+            height: 10px;
+            border-top: 2px solid #333;
+            border-radius: 50%;
+        }
+
+        /* Main Content Elements */
+        .heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #444;
+            max-width: 500px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-cta:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        /* Carousel Indicators */
+        .carousel-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #ccc;
+            border-radius: 50%;
+        }
+
+        .dot.active {
+            background: #333;
+        }
+
+        /* Decorative Sketch Elements (Text-based approximations) */
+        .decor-yay {
+            position: absolute;
+            left: 120px;
+            top: 120px;
+            font-family: 'Kalam', cursive;
+            font-size: 26px;
+            font-weight: bold;
+            transform: rotate(-12deg);
+            color: #222;
+        }
+
+        .decor-chat-bubble {
+            position: absolute;
+            right: 80px;
+            bottom: 60px;
+            background: #fff;
+            border: 2px solid #222;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-family: 'Kalam', cursive;
+            font-size: 18px;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+        }
+
+        .decor-chat-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: 30px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #222 transparent;
+            display: block;
+            width: 0;
+        }
+
+        .chat-avatar-btn {
+            position: absolute;
+            right: 35px;
+            bottom: 30px;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .decor-yay, .decor-chat-bubble, .chat-avatar-btn {
+                display: none;
+            }
+            .page-frame {
+                padding: 30px 20px;
+            }
+            .heading {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-frame">
+        <!-- Handwritten Decorations -->
+        <div class="decor-yay">YAY!</div>
+
+        <!-- Central Content -->
+        <h1 class="heading">What's your story?</h1>
+        <p class="description">
+            You're one conversation away from turning your cherished memories and photographs into a professionally designed heirloom book.
+        </p>
+        
+        <button class="btn-cta">START YOUR STORY</button>
+
+        <div class="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+
+        <!-- Chat Widget Elements -->
+        <div class="decor-chat-bubble">Chat with us!</div>
+        <div class="chat-avatar-btn">💬</div>
+    </div>
+
 </body>
 </html>
